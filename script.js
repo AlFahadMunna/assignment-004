@@ -125,6 +125,16 @@ mainContainer.addEventListener("click", function (event) {
 });
 function renderedInterview() {
   filteredSection.innerHTML = "";
+  if (interviewList.length === 0) {
+    filteredSection.innerHTML = `
+      <div class="text-center py-16 bg-white mt-4 rounded-md">
+        <img src="jobs.png" class="mx-auto w-24 mb-4" alt="No jobs" />
+        <h2 class="text-xl font-semibold">No jobs available</h2>
+        <p class="text-gray-500">There are no interview jobs right now</p>
+      </div>
+    `;
+    return;
+  }
   for (let interview of interviewList) {
     let div = document.createElement("div");
     div.className = "card flex justify-between mt-4 bg-white rounded-md p-6";
@@ -167,48 +177,60 @@ function renderedInterview() {
     filteredSection.appendChild(div);
   }
 }
-
 function renderedRejected() {
   filteredSection.innerHTML = "";
+
+  if (rejectedList.length === 0) {
+    filteredSection.innerHTML = `
+      <div class="text-center py-16  bg-white mt-4 rounded-md">
+        <img src="jobs.png" class="mx-auto w-24 mb-4" alt="No jobs" />
+        <h2 class="text-xl font-semibold">No jobs available</h2>
+        <p class="text-gray-500">There are no rejected jobs right now</p>
+      </div>
+    `;
+    return;
+  }
+
   for (let rejected of rejectedList) {
     let div = document.createElement("div");
     div.className = "card flex justify-between mt-4 bg-white rounded-md p-6";
+
     div.innerHTML = `
-    
-    <div class="card flex justify-between mt-4 bg-white rounded-md">
-          <!-- left part -->
-          <div>
-            <h1 class="font-bold job-name">${rejected.jobName}</h1>
-            <h4 class="job-title text-[#64748b] font-light">
-              ${rejected.jobTitle}
-            </h4>
-            <p class="job-des text-[#64748b] font-light mt-5">
-              ${rejected.jobDescription}
-            </p>
-            <p
-              class="job-status status mt-5 px-4 w-[130px] text-center text-[14px] py-2 rounded-md uppercase bg-[#eef4ff]"
+      <div class="card flex justify-between mt-4 bg-white rounded-md">
+        <!-- left part -->
+        <div>
+          <h1 class="font-bold job-name">${rejected.jobName}</h1>
+          <h4 class="job-title text-[#64748b] font-light">
+            ${rejected.jobTitle}
+          </h4>
+          <p class="job-des text-[#64748b] font-light mt-5">
+            ${rejected.jobDescription}
+          </p>
+          <p
+            class="job-status status mt-5 px-4 w-[130px] text-center text-[14px] py-2 rounded-md uppercase bg-[#eef4ff]"
+          >
+            ${rejected.jobStatus}
+          </p>
+          <p class="job-type text-[#64748b] font-light">
+            ${rejected.jobType}
+          </p>
+          <div class="mt-5">
+            <button
+              class="interview-btn px-3 py-2 border uppercase text-green-500 rounded-md border-green-500"
             >
-              ${rejected.jobStatus}
-            </p>
-            <p class="job-type text-[#64748b] font-light">
-              ${rejected.jobType}
-            </p>
-            <div class="mt-5">
-              <button
-                class="interview-btn px-3 py-2 border uppercase rounded-md border-green-500"
-              >
-                interview
-              </button>
-              <button
-                class="rejected-btn px-3 py-2 border uppercase rounded-md ml-1 border-red-400"
-              >
-                Rejected
-              </button>
-            </div>
+              interview
+            </button>
+            <button
+              class="rejected-btn px-3 py-2 border uppercase text-red-500 rounded-md ml-1 border-red-400"
+            >
+              Rejected
+            </button>
           </div>
-          <!-- right part -->
-          <div><img src="delete.png" alt="" /></div>
-        </div>`;
+        </div>
+        <!-- right part -->
+        <div><img src="delete.png" alt="" /></div>
+      </div>`;
+
     filteredSection.appendChild(div);
   }
 }
