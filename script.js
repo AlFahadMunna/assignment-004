@@ -35,6 +35,14 @@ function toggleStyle(id) {
   const selected = document.getElementById(id);
   selected.classList.remove("bg-white", "text-black");
   selected.classList.add("bg-blue-500", "text-white");
+
+  if (id == "interview-btn") {
+    allCardsSection.classList.add("hidden");
+    filteredSection.classList.remove("hidden");
+  } else if (id == "all-btn") {
+    allCardsSection.classList.remove("hidden");
+    filteredSection.classList.add("hidden");
+  }
 }
 
 mainContainer.addEventListener("click", function (event) {
@@ -43,15 +51,16 @@ mainContainer.addEventListener("click", function (event) {
     const parentNode = event.target.parentNode.parentNode;
     const jobName = parentNode.querySelector(".job-name").innerText;
     const jobTitle = parentNode.querySelector(".job-title").innerText;
-    const jobDescription = parentNode.querySelector(".job-des");
+    const jobDescription = parentNode.querySelector(".job-des").innerText;
     const jobStatus = parentNode.querySelector(".job-status").innerText;
     const jobType = parentNode.querySelector(".job-type").innerText;
 
+    parentNode.querySelector(".status").innerText = "INTERVIEW";
     const cardInfo = {
       jobName,
       jobTitle,
       jobDescription,
-      jobStatus,
+      jobStatus: "INTERVIEW",
       jobType,
     };
 
@@ -62,6 +71,7 @@ mainContainer.addEventListener("click", function (event) {
     if (!jobExist) {
       interviewList.push(cardInfo);
     }
+    calculateCount();
     renderedInterview();
   }
 });
@@ -73,24 +83,23 @@ function renderedInterview() {
     div.className = "card flex justify-between mt-4 bg-white rounded-md p-6";
     div.innerHTML = `
     
-    <div class="card flex justify-between mt-4 bg-white rounded-md p-6">
+    <div class="card flex justify-between mt-4 bg-white rounded-md">
           <!-- left part -->
           <div>
-            <h1 class="font-bold job-name">Mobile First Corp</h1>
+            <h1 class="font-bold job-name">${interview.jobName}</h1>
             <h4 class="job-title text-[#64748b] font-light">
-              React Native Developer
+              ${interview.jobTitle}
             </h4>
             <p class="job-des text-[#64748b] font-light mt-5">
-              Remote • Full-time • $130,000 - $175,000
+              ${interview.jobDescription}
             </p>
             <p
               class="job-status status mt-5 px-4 w-[130px] text-center text-[14px] py-2 rounded-md uppercase bg-[#eef4ff]"
             >
-              Not Applied
+              ${interview.jobStatus}
             </p>
             <p class="job-type text-[#64748b] font-light">
-              Build cross-platform mobile applications using React Native. Work
-              on products used by millions of users worldwide.
+              ${interview.jobType}
             </p>
             <div class="mt-5">
               <button
@@ -108,5 +117,6 @@ function renderedInterview() {
           <!-- right part -->
           <div><img src="delete.png" alt="" /></div>
         </div>`;
+    filteredSection.appendChild(div);
   }
 }
