@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Assignment-004</title>
   </head>
-  <body class="bg-[#f8fafc]">
+  <body class="bg-[#f8fafc] py-15">
     <header class="w-[90%] md:w-[70%] mx-auto">
       <h1 class="text-3xl">Job Application Tracker</h1>
       <div class="grid grid-cols-3 gap-4">
@@ -50,22 +50,27 @@
           Rejected
         </button>
       </div>
+
+      <!--filtered section-->
+      <section id="filtered-section"></section>
       <section id="cards">
         <!--card 1-->
         <div class="card flex justify-between mt-4 bg-white rounded-md p-6">
           <!-- left part -->
           <div>
-            <h1 class="font-bold">Mobile First Corp</h1>
-            <h4 class="text-[#64748b] font-light">React Native Developer</h4>
-            <p class="text-[#64748b] font-light mt-5">
+            <h1 class="font-bold job-name">Mobile First Corp</h1>
+            <h4 class="job-title text-[#64748b] font-light">
+              React Native Developer
+            </h4>
+            <p class="job-des text-[#64748b] font-light mt-5">
               Remote • Full-time • $130,000 - $175,000
             </p>
             <p
-              class="status mt-5 px-4 w-[130px] text-center text-[14px] py-2 rounded-md uppercase bg-[#eef4ff]"
+              class="job-status status mt-5 px-4 w-[130px] text-center text-[14px] py-2 rounded-md uppercase bg-[#eef4ff]"
             >
               Not Applied
             </p>
-            <p class="text-[#64748b] font-light">
+            <p class="job-type text-[#64748b] font-light">
               Build cross-platform mobile applications using React Native. Work
               on products used by millions of users worldwide.
             </p>
