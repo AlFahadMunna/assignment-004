@@ -130,7 +130,7 @@ function renderedInterview() {
       <div class="text-center py-16 bg-white mt-4 rounded-md">
         <img src="jobs.png" class="mx-auto w-24 mb-4" alt="No jobs" />
         <h2 class="text-xl font-semibold">No jobs available</h2>
-        <p class="text-gray-500">There are no interview jobs right now</p>
+        <p class="text-gray-500">Check back soon for new job opportunities</p>
       </div>
     `;
     return;
@@ -185,7 +185,7 @@ function renderedRejected() {
       <div class="text-center py-16  bg-white mt-4 rounded-md">
         <img src="jobs.png" class="mx-auto w-24 mb-4" alt="No jobs" />
         <h2 class="text-xl font-semibold">No jobs available</h2>
-        <p class="text-gray-500">There are no rejected jobs right now</p>
+        <p class="text-gray-500">Check back soon for new job opportunities</p>
       </div>
     `;
     return;
