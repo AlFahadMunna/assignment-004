@@ -2,6 +2,7 @@ let interviewList = [];
 let rejectedList = [];
 
 let total = document.getElementById("total");
+let total1 = document.getElementById("total1");
 let interviewCount = document.getElementById("interview-count");
 let rejectedCount = document.getElementById("rejected-count");
 const filteredSection = document.getElementById("filtered-section");
@@ -18,6 +19,7 @@ function calculateCount() {
   total.innerText = allCardsSection.children.length;
   interviewCount.innerText = interviewList.length;
   rejectedCount.innerText = rejectedList.length;
+  total1.innerText = allCardsSection.children.length;
 }
 calculateCount();
 
