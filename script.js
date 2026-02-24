@@ -7,7 +7,6 @@ let total1 = document.getElementById("total1");
 let interviewCount = document.getElementById("interview-count");
 let rejectedCount = document.getElementById("rejected-count");
 const filteredSection = document.getElementById("filtered-section");
-let jobStatusBtn = document.querySelector(".job-status");
 
 const allFilterBtn = document.getElementById("all-btn");
 const interviewFilterBtn = document.getElementById("interview-btn");
@@ -72,12 +71,6 @@ mainContainer.addEventListener("click", function (event) {
       jobStatus: "INTERVIEW",
       jobType,
     };
-    jobStatusBtn.classList.add(
-      "text-green-500",
-      "border-green-500",
-      "border",
-      "bg-green-100",
-    );
 
     const jobExist = interviewList.find(
       (item) => item.jobName == cardInfo.jobName,
@@ -110,12 +103,6 @@ mainContainer.addEventListener("click", function (event) {
       jobStatus: "REJECTED",
       jobType,
     };
-    jobStatusBtn.classList.add(
-      "text-red-500",
-      "border-red-500",
-      "border",
-      "bg-red-100",
-    );
 
     const jobExist = rejectedList.find(
       (item) => item.jobName == cardInfo.jobName,
@@ -154,7 +141,7 @@ function renderedInterview() {
               ${interview.jobDescription}
             </p>
             <p
-              class="job-status status text-green-500 border border-green-500 bg-green-100 mt-5 px-4 w-[130px] text-center text-[14px] py-2 rounded-md uppercase bg-[#eef4ff]"
+              class="job-status status mt-5 px-4 w-[130px] text-center text-[14px] py-2 rounded-md uppercase bg-[#eef4ff]"
             >
               ${interview.jobStatus}
             </p>
@@ -199,7 +186,7 @@ function renderedRejected() {
               ${rejected.jobDescription}
             </p>
             <p
-              class="job-status status text-green-500 border border-green-500 bg-green-100 mt-5 px-4 w-[130px] text-center text-[14px] py-2 rounded-md uppercase bg-[#eef4ff]"
+              class="job-status status mt-5 px-4 w-[130px] text-center text-[14px] py-2 rounded-md uppercase bg-[#eef4ff]"
             >
               ${rejected.jobStatus}
             </p>
